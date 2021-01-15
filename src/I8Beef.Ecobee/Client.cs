@@ -82,7 +82,7 @@ namespace I8Beef.Ecobee
         /// <inheritdoc />
         public async Task<Pin> GetPinAsync(CancellationToken cancellationToken = default)
         {
-            var requestMessage = new HttpRequestMessage(HttpMethod.Get, _baseUri + "authorize?response_type=ecobeePin&client_id=" + _appKey + "&scope=smartWrite");
+            var requestMessage = new HttpRequestMessage(HttpMethod.Get, _baseUri + "authorize?response_type=ecobeePin&client_id=" + _appKey + "&scope=smartWrite, smartRead, offline_access, openid");
             requestMessage.Headers.ExpectContinue = false;
 
             var response = await SendWithTimeoutAsync(requestMessage, cancellationToken)
